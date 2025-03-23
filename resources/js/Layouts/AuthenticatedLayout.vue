@@ -5,7 +5,7 @@ import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
 import NavLink from '@/Components/NavLink.vue';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
-import SidebarLink from '@/Components/Sidebarlink.vue';
+import SidebarLink from '@/Components/sidebarlink.vue';
 import { Link } from '@inertiajs/vue3';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faTachometerAlt, faUsers, faCogs, faProjectDiagram } from '@fortawesome/free-solid-svg-icons';
@@ -29,7 +29,7 @@ onMounted(() => {
 <template>
     <div class="flex h-screen">
         <!-- Sidebar -->
-        <aside :class="`bg-gray-800 text-white flex flex-col transition-all duration-300 ${collapsed ? 'w-20' : 'w-64'}`">
+        <aside :class="`bg-gray-900 text-white flex flex-col transition-all duration-300 ${collapsed ? 'w-20' : 'w-64'}`">
             <div class="p-4 text-2xl font-bold border-b border-gray-700 flex justify-between items-center">
                 <span v-if="!collapsed">Dashboard</span>
                 <button @click="toggleSidebar" class="focus:outline-none">
