@@ -5,6 +5,7 @@ import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
 import NavLink from '@/Components/NavLink.vue';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
+import SidebarLink from '@/Components/Sidebarlink.vue';
 import { Link } from '@inertiajs/vue3';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faTachometerAlt, faUsers, faCogs, faProjectDiagram } from '@fortawesome/free-solid-svg-icons';
@@ -38,23 +39,18 @@ onMounted(() => {
                 </button>
             </div>
             <nav class="flex-1 p-4 space-y-2">
-                <a :href="route('dashboard')" class="block hover:bg-gray-700 p-2 rounded flex items-center">
-                    <FontAwesomeIcon :icon="faTachometerAlt" class="h-4 w-4" />
-                    <span v-if="!collapsed" class="ml-2">Dashboard</span>
-                </a>
-                <a href="#" class="block hover:bg-gray-700 p-2 rounded flex items-center">
-                    <FontAwesomeIcon :icon="faUsers" class="h-4 w-4" />
-                    <span v-if="!collapsed" class="ml-2">Usuarios</span>
-                </a>
-                <a href="#" class="block hover:bg-gray-700 p-2 rounded flex items-center">
-                    <FontAwesomeIcon :icon="faCogs" class="h-4 w-4" />
-                    <span v-if="!collapsed" class="ml-2">Configuración</span>
-                </a>
-                <!-- Enlace a Proyectos -->
-                <a :href="route('proyectos.index')" class="block hover:bg-gray-700 p-2 rounded flex items-center">
-                    <FontAwesomeIcon :icon="faProjectDiagram" class="h-4 w-4" />
-                    <span v-if="!collapsed" class="ml-2">Proyectos</span>
-                </a>
+                <SidebarLink :href="route('dashboard')" :active="route().current('dashboard')" :icon="faTachometerAlt" :collapsed="collapsed">
+                    Dashboard
+                </SidebarLink>
+                <SidebarLink :icon="faUsers" :collapsed="collapsed">
+                    Usuarios
+                </SidebarLink>
+                <SidebarLink :icon="faCogs" :collapsed="collapsed">
+                    Configuración
+                </SidebarLink>
+                <SidebarLink :href="route('proyectos.index')" :active="route().current('proyectos.index')" :icon="faProjectDiagram" :collapsed="collapsed">
+                    Proyectos
+                </SidebarLink>
             </nav>
         </aside>
 
