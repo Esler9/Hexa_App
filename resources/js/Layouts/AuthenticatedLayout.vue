@@ -28,15 +28,15 @@ function toggleSidebar() {
                 </button>
             </div>
             <nav class="flex-1 p-4 space-y-2">
-                <a href="#" class="block hover:bg-gray-700 p-2 rounded flex items-center">
+                <a :href="route('dashboard')" class="block hover:bg-gray-700 p-2 rounded flex items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12h18M3 6h18M3 18h18" />
                     </svg>
-                    <span v-if="!collapsed" class="ml-2">Inicio</span>
+                    <span v-if="!collapsed" class="ml-2">Dashboard</span>
                 </a>
                 <a href="#" class="block hover:bg-gray-700 p-2 rounded flex items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5V4H2v16h5m10 0v-6h-4v6m-6 0v-6H7v6m6-10V4m-6 6V4" />
                     </svg>
                     <span v-if="!collapsed" class="ml-2">Usuarios</span>
                 </a>
