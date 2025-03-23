@@ -1,3 +1,3 @@
 <template>
-    <img src="/img/logohexah.png" alt="Logo" width="100" />
+    <img src="/img/logohexah.png" alt="Logo" class="h-15 w-200" />
 </template>
