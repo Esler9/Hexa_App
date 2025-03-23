@@ -1,6 +1,5 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import DashboardLayout from '@/Layouts/DashboardLayout.vue';
 import { Head } from '@inertiajs/vue3';
 </script>
 
@@ -8,7 +7,7 @@ import { Head } from '@inertiajs/vue3';
     <Head title="Dashboard" />
 
     <AuthenticatedLayout>
-        <DashboardLayout>
+       
             <template #header>
                 <h2 class="text-xl font-semibold leading-tight text-gray-800">
                     Dashboard
@@ -24,6 +23,6 @@ import { Head } from '@inertiajs/vue3';
                     </div>
                 </div>
             </div>
-        </DashboardLayout>
+      
     </AuthenticatedLayout>
 </template>
