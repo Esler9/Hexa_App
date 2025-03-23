@@ -1,18 +1,28 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import ApplicationLogo from '@/Components/ApplicationLogo.vue';
 import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
 import NavLink from '@/Components/NavLink.vue';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 import { Link } from '@inertiajs/vue3';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { faTachometerAlt, faUsers, faCogs, faProjectDiagram } from '@fortawesome/free-solid-svg-icons';
 
 const showingNavigationDropdown = ref(false);
 const collapsed = ref(false);
 
 function toggleSidebar() {
     collapsed.value = !collapsed.value;
+    localStorage.setItem('sidebar-collapsed', collapsed.value);
 }
+
+onMounted(() => {
+    const savedState = localStorage.getItem('sidebar-collapsed');
+    if (savedState !== null) {
+        collapsed.value = JSON.parse(savedState);
+    }
+});
 </script>
 
 <template>
@@ -20,7 +30,7 @@ function toggleSidebar() {
         <!-- Sidebar -->
         <aside :class="`bg-gray-800 text-white flex flex-col transition-all duration-300 ${collapsed ? 'w-20' : 'w-64'}`">
             <div class="p-4 text-2xl font-bold border-b border-gray-700 flex justify-between items-center">
-                <span v-if="!collapsed">Mi Dashboard</span>
+                <span v-if="!collapsed">Dashboard</span>
                 <button @click="toggleSidebar" class="focus:outline-none">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
@@ -29,28 +39,20 @@ function toggleSidebar() {
             </div>
             <nav class="flex-1 p-4 space-y-2">
                 <a :href="route('dashboard')" class="block hover:bg-gray-700 p-2 rounded flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12h18M3 6h18M3 18h18" />
-                    </svg>
+                    <FontAwesomeIcon :icon="faTachometerAlt" class="h-4 w-4" />
                     <span v-if="!collapsed" class="ml-2">Dashboard</span>
                 </a>
                 <a href="#" class="block hover:bg-gray-700 p-2 rounded flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5V4H2v16h5m10 0v-6h-4v6m-6 0v-6H7v6m6-10V4m-6 6V4" />
-                    </svg>
+                    <FontAwesomeIcon :icon="faUsers" class="h-4 w-4" />
                     <span v-if="!collapsed" class="ml-2">Usuarios</span>
                 </a>
                 <a href="#" class="block hover:bg-gray-700 p-2 rounded flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-                    </svg>
+                    <FontAwesomeIcon :icon="faCogs" class="h-4 w-4" />
                     <span v-if="!collapsed" class="ml-2">Configuración</span>
                 </a>
                 <!-- Enlace a Proyectos -->
                 <a :href="route('proyectos.index')" class="block hover:bg-gray-700 p-2 rounded flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7h18M3 12h18M3 17h18" />
-                    </svg>
+                    <FontAwesomeIcon :icon="faProjectDiagram" class="h-4 w-4" />
                     <span v-if="!collapsed" class="ml-2">Proyectos</span>
                 </a>
             </nav>
