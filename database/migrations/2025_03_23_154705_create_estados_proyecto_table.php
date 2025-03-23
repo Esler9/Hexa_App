@@ -11,14 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('clientes', function (Blueprint $table) {
+        Schema::create('estados_proyecto', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre', 100);
-            $table->string('correo', 100)->nullable();
-            $table->string('telefono', 20)->nullable();
-            $table->text('direccion')->nullable();
-            $table->timestamps(); // crea created_at y updated_at
+            $table->string('nombre', 50); // Ej: Cotización, Producción, Cancelado
+            $table->string('descripcion')->nullable();
+            $table->timestamps();
         });
+        
     }
 
     /**
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('clientes');
+        Schema::dropIfExists('estados_proyecto');
     }
 };
