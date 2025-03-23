@@ -5,17 +5,7 @@ import { createInertiaApp } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { createApp, h } from 'vue';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy';
-
-// Font Awesome configuración
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-
-// Íconos que quieras usar (puedes agregar más)
-import { faUser, faHome, faTrash } from '@fortawesome/free-solid-svg-icons';
-import { faGithub } from '@fortawesome/free-brands-svg-icons';
-
-// Agregar los íconos a la librería
-library.add(faUser, faHome, faTrash, faGithub);
+import { FontAwesomeIcon } from './fontawesome'; // Importar configuración de FontAwesome
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
@@ -32,7 +22,7 @@ createInertiaApp({
         vueApp
             .use(plugin)
             .use(ZiggyVue)
-            .component('font-awesome-icon', FontAwesomeIcon) // 🔥 REGISTRO GLOBAL
+            .component('font-awesome-icon', FontAwesomeIcon) // Registrar el componente FontAwesome
             .mount(el);
 
         return vueApp;

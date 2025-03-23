@@ -1,7 +1,114 @@
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { fas } from '@fortawesome/free-solid-svg-icons';
 
-library.add(fas);
+// Íconos sólidos comunes
+import {
+  faUser,
+  faUsers,
+  faHome,
+  faTrash,
+  faEdit,
+  faSave,
+  faPlus,
+  faMinus,
+  faCheck,
+  faTimes,
+  faSearch,
+  faArrowRight,
+  faArrowLeft,
+  faBars,
+  faChevronDown,
+  faChevronUp,
+  faSignOutAlt,
+  faSignInAlt,
+  faLock,
+  faUnlock,
+  faEye,
+  faEyeSlash,
+  faPrint,
+  faDownload,
+  faUpload,
+  faCalendar,
+  faClipboard,
+  faFile,
+  faFileAlt,
+  faFolder,
+  faCog,
+  faTools,
+  faShoppingCart,
+  faMoneyBill,
+  faCashRegister,
+  faCreditCard,
+  faBox,
+  faChartBar,
+  faChartLine,
+  faDatabase,
+  faBell,
+  faEnvelope,
+  faKey,
+  faInfoCircle,
+  faGear,
+  faExclamationTriangle
+} from '@fortawesome/free-solid-svg-icons';
 
+// Íconos de marcas comunes (opcional)
+import {
+  faGithub,
+  faGoogle,
+  faFacebook
+} from '@fortawesome/free-brands-svg-icons';
+
+// Agregamos a la librería global
+library.add(
+  faUser,
+  faUsers,
+  faHome,
+  faTrash,
+  faEdit,
+  faSave,
+  faPlus,
+  faMinus,
+  faCheck,
+  faTimes,
+  faSearch,
+  faArrowRight,
+  faArrowLeft,
+  faBars,
+  faChevronDown,
+  faChevronUp,
+  faSignOutAlt,
+  faSignInAlt,
+  faLock,
+  faUnlock,
+  faEye,
+  faEyeSlash,
+  faPrint,
+  faDownload,
+  faUpload,
+  faCalendar,
+  faClipboard,
+  faFile,
+  faFileAlt,
+  faFolder,
+  faCog,
+  faTools,
+  faShoppingCart,
+  faMoneyBill,
+  faCashRegister,
+  faCreditCard,
+  faBox,
+  faChartBar,
+  faChartLine,
+  faDatabase,
+  faBell,
+  faEnvelope,
+  faKey,
+  faInfoCircle,
+  faExclamationTriangle,
+  faGithub,
+  faGoogle,
+  faFacebook
+);
+
+// Exporta el componente global
 export { FontAwesomeIcon };
