@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role', // Asegúrate de incluir 'role' aquí
     ];
 
     /**
@@ -54,6 +55,11 @@ class User extends Authenticatable
     public function isUser()
     {
         return $this->role === 'user';
+    }
+
+    public function getRoleAttribute()
+    {
+        return $this->attributes['role'] ?? 'usuario'; // Valor predeterminado si no existe
     }
 
 }

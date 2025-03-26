@@ -5,13 +5,15 @@ import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
 import NavLink from '@/Components/NavLink.vue';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
-import SidebarLink from '@/Components/sidebarlink.vue';
+import SidebarLink from '@/Components/Sidebarlink.vue';
 import { Link } from '@inertiajs/vue3';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faTachometerAlt, faUsers, faCogs, faProjectDiagram } from '@fortawesome/free-solid-svg-icons';
+import { usePage } from '@inertiajs/vue3';
 
 const showingNavigationDropdown = ref(false);
 const collapsed = ref(false);
+const user = usePage().props.auth.user;
 
 function toggleSidebar() {
     collapsed.value = !collapsed.value;
@@ -24,6 +26,8 @@ onMounted(() => {
         collapsed.value = JSON.parse(savedState);
     }
 });
+
+console.log(user); // Verifica si el atributo 'role' está presente
 </script>
 
 <template>
@@ -79,17 +83,9 @@ onMounted(() => {
                                     Dashboard
                                 </NavLink>
                             </div>
-                            <script setup>
-                            import { usePage } from '@inertiajs/vue3'
-                            const user = usePage().props.auth.user
-                            </script>
-
-                            <template>
-                                <div>
-                                    <p class="text-sm text-gray-500">Rol: {{ user.role }}</p>
-                                </div>
-                            </template>
-
+                            <div>
+                                <p v-if="user && user.role" class="text-sm text-gray-500">Rol: {{ user.role }}</p>
+                            </div>
                         </div>
 
                         <div class="hidden sm:ms-6 sm:flex sm:items-center">
