@@ -22,4 +22,8 @@ class AppServiceProvider extends ServiceProvider
     {
         Vite::prefetch(concurrency: 3);
     }
+    protected $policies = [
+        \App\Models\User::class => \App\Policies\UserPolicy::class,
+    ];
+    
 }

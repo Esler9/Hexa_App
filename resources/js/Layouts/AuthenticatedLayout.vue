@@ -29,17 +29,21 @@ onMounted(() => {
 <template>
     <div class="flex h-screen">
         <!-- Sidebar -->
-        <aside :class="`bg-gray-900 text-white flex flex-col transition-all duration-300 ${collapsed ? 'w-20' : 'w-64'}`">
+        <aside
+            :class="`bg-gray-900 text-white flex flex-col transition-all duration-300 ${collapsed ? 'w-20' : 'w-64'}`">
             <div class="p-4 text-2xl font-bold border-b border-gray-700 flex justify-between items-center">
                 <span v-if="!collapsed">Dashboard</span>
                 <button @click="toggleSidebar" class="focus:outline-none">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16m-7 6h7" />
                     </svg>
                 </button>
             </div>
             <nav class="flex-1 p-4 space-y-2">
-                <SidebarLink :href="route('dashboard')" :active="route().current('dashboard')" :icon="faTachometerAlt" :collapsed="collapsed">
+                <SidebarLink :href="route('dashboard')" :active="route().current('dashboard')" :icon="faTachometerAlt"
+                    :collapsed="collapsed">
                     Dashboard
                 </SidebarLink>
                 <SidebarLink :icon="faUsers" :collapsed="collapsed">
@@ -48,7 +52,8 @@ onMounted(() => {
                 <SidebarLink :icon="faCogs" :collapsed="collapsed">
                     Configuración
                 </SidebarLink>
-                <SidebarLink :href="route('proyectos.index')" :active="route().current('proyectos.index')" :icon="faProjectDiagram" :collapsed="collapsed">
+                <SidebarLink :href="route('proyectos.index')" :active="route().current('proyectos.index')"
+                    :icon="faProjectDiagram" :collapsed="collapsed">
                     Proyectos
                 </SidebarLink>
             </nav>
@@ -64,7 +69,7 @@ onMounted(() => {
                             <!-- Logo -->
                             <div class="flex shrink-0 items-center">
                                 <Link :href="route('dashboard')">
-                                    <ApplicationLogo class="block h-9 w-auto fill-current text-gray-800" />
+                                <ApplicationLogo class="block h-9 w-auto fill-current text-gray-800" />
                                 </Link>
                             </div>
 
@@ -74,6 +79,17 @@ onMounted(() => {
                                     Dashboard
                                 </NavLink>
                             </div>
+                            <script setup>
+                            import { usePage } from '@inertiajs/vue3'
+                            const user = usePage().props.auth.user
+                            </script>
+
+                            <template>
+                                <div>
+                                    <p class="text-sm text-gray-500">Rol: {{ user.role }}</p>
+                                </div>
+                            </template>
+
                         </div>
 
                         <div class="hidden sm:ms-6 sm:flex sm:items-center">
@@ -82,10 +98,14 @@ onMounted(() => {
                                 <Dropdown align="right" width="48">
                                     <template #trigger>
                                         <span class="inline-flex rounded-md">
-                                            <button type="button" class="inline-flex items-center rounded-md border border-transparent bg-white px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition duration-150 ease-in-out hover:text-gray-700 focus:outline-none">
+                                            <button type="button"
+                                                class="inline-flex items-center rounded-md border border-transparent bg-white px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition duration-150 ease-in-out hover:text-gray-700 focus:outline-none">
                                                 {{ $page.props.auth.user.name }}
-                                                <svg class="-me-0.5 ms-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                                <svg class="-me-0.5 ms-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg"
+                                                    viewBox="0 0 20 20" fill="currentColor">
+                                                    <path fill-rule="evenodd"
+                                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                                        clip-rule="evenodd" />
                                                 </svg>
                                             </button>
                                         </span>
@@ -105,10 +125,17 @@ onMounted(() => {
 
                         <!-- Hamburger -->
                         <div class="-me-2 flex items-center sm:hidden">
-                            <button @click="showingNavigationDropdown = !showingNavigationDropdown" class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 transition duration-150 ease-in-out hover:bg-gray-100 hover:text-gray-500 focus:bg-gray-100 focus:text-gray-500 focus:outline-none">
+                            <button @click="showingNavigationDropdown = !showingNavigationDropdown"
+                                class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 transition duration-150 ease-in-out hover:bg-gray-100 hover:text-gray-500 focus:bg-gray-100 focus:text-gray-500 focus:outline-none">
                                 <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                                    <path :class="{ 'hidden': showingNavigationDropdown, 'inline-flex': !showingNavigationDropdown }" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                                    <path :class="{ 'hidden': !showingNavigationDropdown, 'inline-flex': showingNavigationDropdown }" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                    <path
+                                        :class="{ 'hidden': showingNavigationDropdown, 'inline-flex': !showingNavigationDropdown }"
+                                        stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M4 6h16M4 12h16M4 18h16" />
+                                    <path
+                                        :class="{ 'hidden': !showingNavigationDropdown, 'inline-flex': showingNavigationDropdown }"
+                                        stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M6 18L18 6M6 6l12 12" />
                                 </svg>
                             </button>
                         </div>
@@ -116,7 +143,8 @@ onMounted(() => {
                 </div>
 
                 <!-- Responsive Navigation Menu -->
-                <div :class="{ 'block': showingNavigationDropdown, 'hidden': !showingNavigationDropdown }" class="sm:hidden">
+                <div :class="{ 'block': showingNavigationDropdown, 'hidden': !showingNavigationDropdown }"
+                    class="sm:hidden">
                     <div class="space-y-1 pb-3 pt-2">
                         <ResponsiveNavLink :href="route('dashboard')" :active="route().current('dashboard')">
                             Dashboard
@@ -154,7 +182,8 @@ onMounted(() => {
             </header>
 
             <!-- Page Content -->
-            <main :class="`flex-1 bg-gray-100 p-6 overflow-auto transition-all duration-300 ${collapsed ? 'ml-20' : 'ml-64'}`">
+            <main
+                :class="`flex-1 bg-gray-100 p-6 overflow-auto transition-all duration-300 ${collapsed ? 'ml-20' : 'ml-64'}`">
                 <slot />
             </main>
         </div>
